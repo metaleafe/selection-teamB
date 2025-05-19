@@ -1,0 +1,136 @@
+@use'../common/mixin' as m;
+
+.wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 80px 30px 0;
+}
+
+.qa {
+    &_list {
+        border: 1px solid var(--text-color);
+        margin-bottom: 80px;
+        text-align: left;
+
+        @include m.sp {
+            margin-bottom: 43px;
+        }
+
+        span {
+            padding-right: 54px;
+        }
+
+        .question {
+            padding: 20px 0;
+            padding-left: 10%;
+            border-bottom: 1px solid var(--text-color);
+            transition: background .3s ease;
+            cursor: pointer;
+            position: relative;
+
+            @include m.sp {
+                padding: 16px 0;
+                padding-left: 10%;
+            }
+
+            &:nth-child(9) {
+                border-bottom: none;
+            }
+
+            &:hover {
+                background-color: #fbd33570;
+                opacity: 1;
+            }
+
+            &.active {
+                background-color: #fbd33570; // ← クリック時の背景色
+            }
+
+            span {
+                position: relative;
+                display: block;
+                width: 100%;
+                font-size: 2.0rem;
+
+                @include m.sp {
+                    font-size: 1.3rem;
+                }
+
+                &::before {
+                    position: absolute;
+                    content: "Q";
+                    color: var(--border-color);
+                    font-size: 1.8rem;
+                    left: -33px;
+                    font-weight: bolder;
+
+                    @include m.sp {
+                        left: -22px;
+                        top: -6px;
+                    }
+                }
+
+                &::after {
+                    content: "";
+                    border-right: 3px solid #333333;
+                    border-bottom: 3px solid #333333;
+                    transform: translateY(calc(-50% - 5px)) rotate(45deg);
+                    transition: transform 0.3s ease; // ← スムーズなアニメーション
+                    position: absolute;
+                    top: 50%;
+                    right: 22px;
+                    width: 15px;
+                    height: 15px;
+                }
+            }
+
+            &.active span::after {
+                transform: translateY(calc(0% - 5px)) rotate(225deg); // ← 180度回転
+            }
+        }
+
+
+
+
+        .answer {
+            padding: 20px 0;
+            padding-left: 10%;
+            display: none;
+            border-bottom: 1px solid var(--text-color);
+
+            @include m.sp {
+                padding: 16px 0;
+                padding-left: 10%;
+            }
+
+
+            &:nth-child(10) {
+                border-top: 1px solid var(--text-color);
+                // border-top: none;    
+                border-bottom: none;
+            }
+
+            span {
+                position: relative;
+                display: block;
+                width: 100%;
+                font-size: 2.0rem;
+
+                @include m.sp {
+                    font-size: 1.3rem;
+                }
+
+
+                &::before {
+                    position: absolute;
+                    content: "A";
+                    color: var(--text-color2);
+                    font-size: 1.8rem;
+                    left: -22px;
+                    font-weight: bolder;
+                }
+            }
+        }
+    }
+}

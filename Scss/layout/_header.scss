@@ -1,0 +1,880 @@
+@use'../common/mixin' as m;
+
+// header
+header {
+    margin-bottom: 310px;
+
+    @include m.tb {
+        margin-bottom: 185px;
+    }
+
+    @include m.ts {
+        margin-bottom: -80px;
+    }
+
+    @include m.sp {
+        margin-bottom: 15px;
+    }
+}
+
+.header {
+    margin-bottom: 110px;
+
+    &-bg {
+        background-image: url(../img/sky-pc.jpg);
+        background-size: cover;
+        height: 80vh;
+
+        @include m.sp {
+            background-image: url(../img/sky-sp.jpg);
+        }
+
+        &::after {
+            content: "";
+            background-color: #FBD335;
+            bottom: 0;
+            display: block;
+            height: 590px;
+            clip-path: polygon(0 37%, 100% 5%, 100% 100%, 0% 100%);
+            left: 0;
+            position: absolute;
+            width: 100%;
+            z-index: 0;
+            top: 40%;
+
+
+            @include m.tb {
+                // z-index: 26;
+                clip-path: polygon(0 40%, 100% 23%, 100% 100%, 0% 100%);
+                height: 500px;
+                top: 36%;
+                display: none;
+            }
+
+            @include m.ts {
+                // z-index: 26;
+                height: 500px;
+                top: 13%;
+                display: none;
+                clip-path: polygon(0 34%, 100% 23%, 100% 100%, 0% 100%);
+            }
+        }
+    }
+
+    &-box {
+        display: flex;
+        position: fixed;
+        top: 0;
+        right: 0;
+        justify-content: space-between;
+        margin: 0 auto;
+        width: 100%;
+        text-align: center;
+        z-index: 2200;
+        height: 90px;
+        padding: 0 5%;
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+
+            &-img {
+                img {
+                    width: 177px;
+                    transition: 1.0s;
+                }
+            }
+
+            &-text {
+                img {
+                    width: 290px;
+                    transition: 1.0s;
+                }
+            }
+
+            &-fixed {
+                display: none;
+                transition: 1.0s;
+            }
+        }
+    }
+
+    &-logo {
+        @include m.tb {
+            display: flex;
+        }
+
+        &-top {
+            img {
+                width: 38%;
+
+                @include m.tb {
+                    width: 100%;
+                }
+            }
+        }
+
+        &-text {
+            img {
+                width: 64%;
+
+                @include m.tb {
+                    width: 100%;
+                }
+            }
+        }
+
+        &-bottom {
+            font-size: 68px;
+            color: #4F73D8;
+
+            @include m.tb {
+                font-size: 40px;
+            }
+        }
+    }
+}
+
+/* 固定ヘッダー、下層ページ用ヘッダー*/
+.fixed{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100px;
+    background-color: #fff;
+    transition: all 1.0s;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+
+    @include m.sp {
+        height: 76px;
+    }
+}
+
+.fixed,
+.lower {
+    .header{
+        &-box{
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100px;
+            background-color: #fff;
+            transition: all 1.0s;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+        
+            @include m.sp {
+                height: 76px;
+            }
+        }
+    }
+
+    /* スクロール後変更箇所 */
+    h1 {
+        font-size: 20px;
+        padding: 13px 0 0 50px;
+    }
+
+    .hamburger {
+        &-logo {
+            display: inline-block;
+
+            img {
+                display: inline-block;
+            }
+        }
+
+        &-nav{
+            top: -200%;
+        }
+    }
+
+    .toggle {
+        margin: 10px 0 0 0;
+        display: block;
+        transition: all 1.0s;
+    }
+
+
+    .logo {
+        display: flex;
+        flex-direction: row;
+        transition: 1.0s;
+
+        &-img {
+            padding-left: 0;
+
+            img {
+                max-width: 60px;
+                transition: 1.0s;
+
+                @include m.sp {
+                    max-width: 52px;
+                }
+            }
+        }
+
+        &-text {
+            img {
+                max-width: 155px;
+                transition: 1.0s;
+
+                @include m.sp {
+                    max-width: 116px;
+                }
+            }
+        }
+
+        &-header {
+            display: none;
+            transition: 1.0s;
+        }
+
+        &-fixed {
+            display: block;
+            background: #4579DD;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: 1.0s;
+            font-size: 17px;
+            font-weight: bold;
+
+            @include m.sp {
+                font-size: 15px;
+            }
+        }
+    }
+    
+}
+
+.hamburger {
+    &-logo {
+        display: none;
+        margin: 10px 0 0 0;
+
+        @include m.sp {
+            padding: 0px 0 0 12px;
+        }
+
+        img {
+            display: none;
+        }
+    }
+
+    &-nav {
+        display: flex;
+        position: absolute;
+        top: 10px;
+        right: 0;
+        z-index: 2500;
+
+        @include m.pc {
+            top: -200%;
+        }
+    }
+
+    &-link {
+        display: flex;
+        align-items: center;
+        gap: 70px;
+
+        a {
+            font-size: 20px;
+        }
+
+        li {
+            position: static;
+            width: 120px;
+            text-align: center;
+            font-size: 16px;
+            white-space: nowrap;
+            letter-spacing: 2.8px;
+
+            &:last-child {
+                margin: 5px 50px 0 0;
+                line-height: 1.2;
+                padding-bottom: 5px;
+
+                a {
+                    color: #fff;
+                    position: relative;
+                    /*リンクの形状*/
+                    display: inline-block;
+                    text-decoration: none;
+                    border-radius: 50%;
+                    background: #4F73D8;
+                    border: 1px solid #4F73D8;
+                    outline: none;
+                    width: 85px;
+                    height: 85px;
+                    transition: all 1s;
+
+                    i {
+                        font-size: 25px;
+                        position: absolute;
+                        top: 35%;
+                        left: 35%;
+                        transform: translateY(-50%);
+                    }
+
+                    span {
+                        font-size: 11px;
+                        position: absolute;
+                        top: 68%;
+                        left: 11%;
+                        transform: translateY(-50%);
+                        transition: all 1s;
+                    }
+
+                    &:hover {
+                        &::before {
+                            content: '';
+                            /*絶対配置で波形の位置を決める*/
+                            position: absolute;
+                            left: 30%;
+                            top: 0;
+                            /*波形の形状*/
+                            border: 1px solid #333;
+                            width: 85px;
+                            height: 85px;
+                            border-radius: 50%;
+                            /*はじめは不透明*/
+                            opacity: 1;
+                            /*アニメーションの設定*/
+                            /*波形が広がるアニメーション*/
+                            animation: 1s circleanime forwards;
+
+                            @keyframes circleanime {
+                                0% {
+                                    transform: scale(0);
+                                }
+
+                                100% {
+                                    transform: scale(2);
+                                    opacity: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            a {
+                padding: 10px;
+
+                span {
+                    &:nth-child(2) {
+                        display: none;
+                    }
+                }
+
+                &:hover {
+                    border-radius: 10px;
+
+                    span {
+                        &:nth-child(2) {
+                            display: inline;
+                        }
+
+                        &:first-child {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include m.tb {
+    .orange {
+        background-color: #FBD335;
+        height: 165px;
+        width: 100%;
+        display: inline-block;
+        position: relative;
+    }
+}
+
+
+.mainvisual {
+
+    @include m.sp {
+        top: -52%;
+    }
+
+    &-flex {
+        display: flex;
+        justify-content: space-between;
+
+        @include m.tb {
+            flex-direction: column;
+        }
+    }
+
+    &-slider {
+        z-index: 25;
+        max-width: 70%;
+
+        @include m.tb {
+            max-width: 100%;
+        }
+
+        .slick {
+            &-track {
+                display: flex;
+                align-items: center;
+                overflow: hidden;
+                width: 100%;
+                height: 100%;
+
+                li {
+                    width: 100%;
+                    height: 100%;
+                    overflow: hidden;
+                }
+
+                img {
+                    display: block;
+                    height: auto;
+                    width: 70%;
+                    object-fit: cover;
+
+                    @include m.tb {
+                        padding: 15px 0 0px 0px;
+                    }
+                }
+            }
+        }
+    }
+
+    .slick {
+        &-slide {
+            width: 100vw; // 各スライドを全幅表示
+            height: 500px;
+            z-index: 25;
+            overflow: hidden;
+            padding-top: 108px;
+
+            @include m.tb {
+                padding-top: 0px;
+            }
+
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                display: block;
+            }
+        }
+    }
+
+    .slick-dots,
+    .slick-arrow {
+        display: none !important; // 矢印とドットを非表示
+    }
+
+    &-text {
+        position: absolute;
+        top: 71%;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        z-index: 50;
+
+
+        @include m.tb {
+            z-index: 50;
+            top: -10%;
+        }
+
+        @include m.ts {
+            top: 0%;
+        }
+
+        @include m.sp {
+            top: 12%;
+            left: 8%;
+            width: 80%;
+        }
+
+        &-inner {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        &-box {
+            display: flex;
+            animation: loop-slide 15s linear infinite;
+            white-space: nowrap;
+
+            @include m.sp {
+                animation: none;
+            }
+
+            @keyframes loop-slide {
+                0% {
+                    transform: translateX(0%);
+                }
+
+                100% {
+                    transform: translateX(-50%);
+                }
+            }
+        }
+
+        &-item {
+            font-size: 150px;
+            font-weight: bold;
+            color: #fff;
+            opacity: 0.7;
+            padding-right: 55px;
+            text-shadow: 1px 2px 3px #4F73D8;
+
+            @include m.tb {
+                font-size: 110px;
+            }
+
+            @include m.ts {
+                font-size: 90px;
+            }
+
+            @include m.sp {
+                font-size: 33px;
+            }
+        }
+    }
+}
+
+
+
+/*Scrollテキストの描写*/
+.scrolldown {
+
+    span {
+        position: absolute;
+        right: 65px;
+        bottom: 32px;
+        color: #4F73D8;
+        font-size: 1rem;
+        letter-spacing: 0.05em;
+        -ms-writing-mode: tb-rl;
+        -webkit-writing-mode: vertical-rl;
+        writing-mode: vertical-rl;
+        white-space: nowrap;
+        z-index: 100;
+        animation: scrollMove 2s ease-in-out infinite;
+
+        @include m.tb {
+            right: 65px;
+            bottom: -57px;
+        }
+
+        @include m.sp {
+            right: 27px;
+            bottom: 45px;
+        }
+
+
+        /*Scrollアニメーション定義*/
+        @keyframes scrollMove {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px); // 上下に10px動かす
+            }
+        }
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        right: 94px;
+        width: 2px;
+        height: 20px;
+        background: #4F73D8;
+        transform: skewX(-31deg);
+        z-index: 100;
+
+        @include m.tb {
+            bottom: -90px;
+            right: 90px;
+            width: 1px;
+            height: 20px;
+        }
+
+        @include m.sp {
+            bottom: 20px;
+            right: 49px;
+            width: 1px;
+            height: 20px;
+        }
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        right: 100px;
+        width: 2px;
+        height: 125px;
+        background: #4F73D8;
+        z-index: 100;
+
+        @include m.tb {
+            bottom: -90px;
+            right: 95px;
+            width: 1px;
+            height: 109px;
+        }
+
+        @include m.sp {
+            bottom: 19px;
+            right: 55px;
+            width: 1px;
+            height: 109px;
+        }
+    }
+}
+
+.sp {
+    @include m.sp {
+        display: none;
+    }
+}
+
+// -------------------------------------------------------
+// toggle
+// -------------------------------------------------------
+
+.toggle {
+    display: none;
+    border: 1px solid #4F73D8;
+    border-radius: 50%;
+    background: #4F73D8;
+    width: 80px;
+    height: 80px;
+    margin: 30px 0 0 0;
+    transform: all 1.0s;
+
+    @include m.pc {
+        display: block;
+    }
+
+    .inner {
+        width: 35px;
+        height: 45px;
+        position: relative;
+        transition: all .5s;
+        cursor: pointer;
+        margin: 7px auto 0 auto;
+        // z-index: 1120;
+
+        span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #fff;
+            transition: all .5s;
+            position: absolute;
+
+            &:nth-child(1) {
+                top: 25%;
+            }
+
+            &:nth-child(2) {
+                top: 50%;
+            }
+
+            &:nth-child(3) {
+                top: 75%;
+            }
+        }
+    }
+
+    p {
+        font-size: 1.2rem;
+        color: #fff;
+        letter-spacing: 2.8px;
+    }
+}
+
+.mask {
+    display: none;
+    transition: .3s;
+}
+
+.open {
+    .header {
+        &-box {
+            position: fixed;
+            background-color: #ffffff00;
+            box-shadow: none;
+        }
+    }
+
+    .toggle {
+        margin: 30px 0 0 0;
+        border: none;
+        background: #4f74d800;
+        display: block;
+
+        .inner {
+            width: 60px;
+
+            span {
+                background: #333;
+                z-index: 2200;
+
+                &:nth-child(1) {
+                    transform: rotate(-315deg);
+                    top: 50%;
+                }
+
+                &:nth-child(2) {
+                    display: none;
+                }
+
+                &:nth-child(3) {
+                    transform: rotate(315deg);
+                    top: 50%;
+                }
+
+            }
+        }
+
+        p {
+            display: none;
+        }
+    }
+
+    .mask {
+        display: block;
+        background-image: url(../img/sky-sp.jpg);
+        background-size: cover;
+        transition: all 1s ease;
+        opacity: 1;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: 1110;
+    }
+
+    .hamburger {
+        &-logo {
+            margin: 30px 0 0 0;
+            z-index: 2200;
+            display: inline-block;
+
+            img {
+                display: inline-block;
+            }
+        }
+
+        &-nav {
+            position: fixed;
+            top: 100px;
+            right: 50%;
+            transform: translate(50%);
+            z-index: 2200;
+            padding-top: 30px;
+        }
+
+        &-link {
+            flex-direction: column;
+            padding-right: 0;
+            z-index: 2100;
+
+            li {
+                &:last-child {
+                    margin: 0;
+                    display: contents;
+
+                    a {
+                        border-radius: 10px;
+                        width: 220px;
+
+                        &:hover {
+                            color: #4F73D8;
+                            background: #ffffff00;
+                        }
+                    }
+
+                    i {
+                        font-size: 25px;
+                        position: absolute;
+                        top: 20%;
+                        left: 50%;
+                        transform: translate(-50%);
+                    }
+
+                    span {
+                        font-size: 1.6rem;
+                        top: 58%;
+                        left: 50%;
+                        transform: translate(-50%);
+                        transition: all 1s;
+                    }
+                }
+            }
+        }
+    }
+
+    .logo {
+        display: flex;
+        flex-direction: row;
+        transition: 1.0s;
+
+        &-img {
+            padding-left: 0;
+
+            img {
+                max-width: 60px;
+                transition: 1.0s;
+
+                @include m.sp {
+                    max-width: 52px;
+                }
+            }
+        }
+
+        &-text {
+            img {
+                max-width: 155px;
+                transition: 1.0s;
+
+                @include m.sp {
+                    max-width: 116px;
+                }
+            }
+        }
+
+        &-header {
+            display: none;
+            transition: 1.0s;
+        }
+
+        &-fixed {
+            display: block;
+            background: #4579DD;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: 1.0s;
+            font-size: 17px;
+            font-weight: bold;
+
+            @include m.sp {
+                font-size: 15px;
+            }
+        }
+    }
+}

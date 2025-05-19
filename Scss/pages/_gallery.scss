@@ -1,0 +1,44 @@
+@use'../common/mixin' as m;
+
+.slider {
+    /*横幅94%で左右に余白を持たせて中央寄せ*/
+    width: 94%;
+    margin: 0 auto;
+
+    img {
+        width: 30vw;
+        /*スライダー内の画像を60vwにしてレスポンシブ化*/
+        height: auto;
+
+        @include m.sp {
+            width: 60vw;
+        }
+    }
+
+    .slick-slide {
+        transform: scale(0.8);
+
+        @include m.ts {
+            transform: scale(0.5);
+            opacity: 0.1;
+        }
+
+        /*左右の画像のサイズを80%に*/
+        transition: all .5s;
+        /*拡大や透過のアニメーションを0.5秒で行う*/
+        opacity: 0.5;
+        /*透過50%*/
+    }
+
+    .slick-slide.slick-center {
+        transform: scale(1);
+
+        @include m.ts {
+            transform: scale(1.6);
+        }
+
+        /*中央の画像のサイズだけ等倍に*/
+        opacity: 1;
+        /*透過なし*/
+    }
+}

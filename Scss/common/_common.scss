@@ -1,0 +1,286 @@
+@charset "UTF-8";
+@use'../common/mixin' as m;
+
+body {
+    font-family: 'Noto Sans', sans-serif;
+    line-height: 1.75;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+img {
+    width: 100%;
+}
+
+:root {
+    --background-color: #ffffff;
+    --text-color: #333333;
+    --border-color: #fbd335;
+    --heading-color: #55bfe9;
+    --text-color2: #f6973e;
+}
+
+h1 {
+    font-size: 50px;
+    color: #4F73D8;
+    padding: 40px 0 0 37px;
+    width: 440px;
+    z-index: 100;
+    text-align: center;
+    position: relative;
+    @include m.tb{
+        width: 250px;
+        font-size: 10px;
+        padding: 30px 0 0 24px;
+    }
+}
+
+h2 {
+    color: var(--heading-color);
+    border-bottom: 5px solid var(--border-color);
+    text-align: center;
+    display: inline-block;
+    margin: 0 0 75px 0;
+    text-shadow: 1px 2px 3px #787f91;
+    font-size: 10.6rem;
+
+    @include m.tb{
+        font-size: 6.2rem;
+    }
+
+    @include m.sp{
+        font-size: 4.2rem;
+        margin: 25px 0 30px 0;
+    }
+}
+
+
+h3 {
+    font-weight: lighter;
+}
+
+h4 {
+    text-align: center;
+    color: #4F73D8;
+    font-size: 5.0rem;
+    background: linear-gradient(90deg, #4579DD 0%, #4FB8FF 40%, #615CEC 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    @include m.sp{
+        font-size: 3.2rem;
+    }
+}
+
+p{
+    font-size: 2.5rem;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    color: #333;
+    list-style: none;
+    text-decoration: none;
+}
+
+section {
+    text-align: center;
+    margin-top: 80px;
+    padding-top: 80px;
+    
+    @include m.sp {
+        margin-top: 30px;
+        padding-top: 10px;
+    }
+}
+
+.logo {
+    display: flex;
+}
+
+/* PCでは非表示 */
+.sp {
+    &-br {
+        display: none;
+
+        /* スマホ（幅768px以下）では改行 */
+        @include m.sp {
+            display: block;
+            height: 0;
+        }
+    }
+}
+
+footer{
+    .sp {
+        &-br {
+            display: none;
+
+            @include m.tb {
+                display: block;
+                height: 0;
+            }
+        }
+    }
+}
+
+
+// -------------------------------------------------------
+// 下層ページ(共通)
+// -------------------------------------------------------
+
+.lower {
+    &-top {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+        max-width: 1500px;
+    }
+
+}
+
+.bubble {
+    display: block;
+    max-width: 120px;
+    width: 50%;
+    height: auto;
+    padding-top: 80px;
+    animation: floating-y 4s ease-in-out infinite alternate-reverse;
+
+    &-top {
+        display: block;
+        max-width: 140px;
+        width: 40%;
+        height: auto;
+        padding-top: 40px;
+        animation: floating-top 8s ease-in-out infinite alternate-reverse;
+    }
+
+    &-stripe {
+        display: block;
+        max-width: 140px;
+        width: 40%;
+        height: auto;
+        padding-top: 40px;
+        animation: floating-stripe 10s ease-in-out infinite alternate-reverse;
+    }
+
+    &-bottom {
+        display: block;
+        max-width: 130px;
+        width: 30%;
+        height: auto;
+        padding-top: 100px;
+        animation: floating-bottom 6s ease-in-out infinite alternate-reverse;
+    }
+}
+
+
+@keyframes floating-y {
+    0% {
+        transform: translateY(-10%);
+    }
+
+    100% {
+        transform: translateY(10%);
+    }
+}
+
+@keyframes floating-top {
+    0% {
+        transform: translateY(-10%);
+    }
+
+    100% {
+        transform: translateY(10%);
+    }
+}
+
+@keyframes floating-stripe {
+    0% {
+        transform: rotateZ(-45deg);
+    }
+
+    100% {
+        transform: translateY(10%);
+    }
+}
+
+
+@keyframes floating-bottom {
+    0% {
+        transform: translateY(-10%);
+    }
+
+    100% {
+        transform: translateY(10%);
+    }
+}
+
+// -------------------------------------------------------
+// Page top
+// -------------------------------------------------------
+button {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 160px;
+    height: 80px;
+    right: 20px;
+    bottom: -160px;
+    color: #fff;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    border: 0;
+    background: #f6973e;
+    transition: .2s;
+    letter-spacing: 3px;
+    font-weight: bold;
+    border-radius: 100px 100px 0 0;
+    z-index: 1000;
+
+    @include m.sp {
+        width: 95px;
+        height: 56px;
+    }
+}
+
+button i {
+    position: absolute;
+    font-size: 30px;
+    color: #FFF;
+    top: 0;
+    font-weight: 300;
+
+    @include m.sp {
+        font-size: 25px;
+    }
+}
+
+button p {
+    margin: 0;
+    font-size: 15px;
+    bottom: 13px;
+    position: absolute;
+
+    @include m.sp {
+        font-size: 10px;
+        bottom: 8px;
+    }
+}
+
+.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+button.is-active {
+    bottom: 0px;
+}

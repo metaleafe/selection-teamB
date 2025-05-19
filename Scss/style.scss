@@ -1,0 +1,15 @@
+// common
+@use'common/mixin' as m;
+@use'common/common';
+
+// layouts
+@use'layout/header';
+@use'layout/footer';
+
+// pages
+@use'pages/about';
+@use'pages/news';
+@use'pages/gallery';
+@use'pages/qa';
+@use'pages/contact';
+@use'pages/loading';
